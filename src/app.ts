@@ -21,7 +21,5 @@ const slugger = (text: string): string => {
   return text;
 };
 
-console.log("way anasını")
-
 console.log(slugger('Selam dünyalı biz dostuz. Çünkü türkçe karakter kullanıyoruz ağam'));
 // selam-dunyali-biz-dostuz.-cunku-turkce-karakter-kullaniyoruz-agam

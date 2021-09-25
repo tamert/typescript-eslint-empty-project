@@ -5,21 +5,14 @@ const slugger = (text: string): string => {
     şŞ: 's',
     üÜ: 'u',
     ıİ: 'i',
-    öÖ: 'o'
+    öÖ: 'o',
   };
-  text = text
-    .toLowerCase()
-    .split(' ')
-    .join('-');
   for (const key in turkish) {
-    text = text
-      .split(key[0])
-      .join(turkish[key])
-      .split(key[1])
-      .join(turkish[key]);
+    text = text.replace(new RegExp( key[0]+"|"+key[1], 'g' ), turkish[key]);
   }
-  return text;
+  return text .toLowerCase().replace(new RegExp(" |\\.", 'g'), "-");
+  // @note: "string".split(" ").join("-") It would work. However, it's slower than regex methods
 };
 
 console.log(slugger('Selam dünyalı biz dostuz. Çünkü türkçe karakter kullanıyoruz ağam'));
-// selam-dunyali-biz-dostuz.-cunku-turkce-karakter-kullaniyoruz-agam
+// selam-dunyali-biz-dostuz--cunku-turkce-karakter-kullaniyoruz-agam
